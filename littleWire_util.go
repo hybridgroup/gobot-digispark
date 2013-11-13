@@ -4,6 +4,6 @@ package gobotDigispark
 import "C"
 
 //void delay(unsigned int duration);
-func delay(duration uint) {
+func Delay(duration uint) {
   C.delay(C.uint(duration))
 }

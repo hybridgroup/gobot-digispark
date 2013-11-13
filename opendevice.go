@@ -1,9 +1,11 @@
 package gobotDigispark
 
 /*
-//#include <opendevice.h>
-import "C"
+#include <opendevice.h>
+*/
+//import "C"
 
+/*
 //int usbGetStringAscii(usb_dev_handle *dev, int index, char *buf, int buflen);
 func usbGetStringAscii(dev *usb_dev_handle, index int, buf *int8, buflen int) int {
   return int(C.usbGetStringAscii(dev, index, buf, buflen))
