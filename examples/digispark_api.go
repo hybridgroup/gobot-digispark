@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/hybridgroup/gobot"
 	"github.com/hybridgroup/gobot-digispark"
 	"github.com/hybridgroup/gobot-gpio"
@@ -9,38 +8,33 @@ import (
 
 func main() {
 
+	master := gobot.GobotMaster()
+	gobot.Api(master)
+
 	digispark := new(gobotDigispark.DigisparkAdaptor)
-	digispark.Name = "Digispark"
+	digispark.Name = "digispark"
 
 	led := gobotGPIO.NewLed(digispark)
-	led.Driver = gobot.Driver{
-		Name: "led",
-		Pin:  "2",
-	}
+	led.Name = "led"
+	led.Pin = "2"
 
 	connections := []interface{}{
 		digispark,
 	}
+
 	devices := []interface{}{
 		led,
 	}
 
 	work := func() {
-		gobot.Every("0.5s", func() {
-			led.Toggle()
-			if led.IsOn() {
-				fmt.Println("On")
-			} else {
-				fmt.Println("Off")
-			}
-		})
 	}
 
-	robot := gobot.Robot{
+	master.Robots = append(master.Robots, gobot.Robot{
+		Name:        "digispark",
 		Connections: connections,
 		Devices:     devices,
 		Work:        work,
-	}
+	})
 
-	robot.Start()
+	master.Start()
 }
