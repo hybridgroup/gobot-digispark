@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-
 	master := gobot.GobotMaster()
 	gobot.Api(master)
 
@@ -18,22 +17,10 @@ func main() {
 	led.Name = "led"
 	led.Pin = "2"
 
-	connections := []interface{}{
-		digispark,
-	}
-
-	devices := []interface{}{
-		led,
-	}
-
-	work := func() {
-	}
-
 	master.Robots = append(master.Robots, gobot.Robot{
 		Name:        "digispark",
-		Connections: connections,
-		Devices:     devices,
-		Work:        work,
+		Connections: []interface{}{digispark},
+		Devices:     []interface{}{led},
 	})
 
 	master.Start()
