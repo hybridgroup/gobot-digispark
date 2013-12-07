@@ -26,8 +26,8 @@ func main() {
 	}
 
 	robot := gobot.Robot{
-		Connections: []interface{} { digispark },
-		Devices:     []interface{} { servo },
+		Connections: []interface{}{digispark},
+		Devices:     []interface{}{servo},
 		Work:        work,
 	}
 
