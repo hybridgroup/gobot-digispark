@@ -14,7 +14,6 @@ func main() {
 
 	servo := gobotGPIO.NewServo(digispark)
 	servo.Name = "servo"
-	servo.Pin = "0"
 
 	work := func() {
 		servo.InitServo()
