@@ -10,15 +10,16 @@ import (
 func main() {
 
 	digispark := new(gobotDigispark.DigisparkAdaptor)
-	digispark.Name = "Digispark"
+	digispark.Name = "digispark"
 
 	servo := gobotGPIO.NewServo(digispark)
 	servo.Name = "servo"
+	servo.Pin = "0"
 
 	work := func() {
 		servo.InitServo()
 		gobot.Every("1s", func() {
-			i := int(gobot.Rand(180))
+			i := uint8(gobot.Rand(180))
 			fmt.Println("Turning", i)
 			servo.Move(i)
 		})
