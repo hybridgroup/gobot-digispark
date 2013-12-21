@@ -23,11 +23,11 @@ func (da *DigisparkAdaptor) Reconnect() bool {
 func (da *DigisparkAdaptor) Finalize() bool   { return false }
 func (da *DigisparkAdaptor) Disconnect() bool { return false }
 
-func (da *DigisparkAdaptor) DigitalWrite(pin string, level string) {
+func (da *DigisparkAdaptor) DigitalWrite(pin string, level byte) {
 	p, _ := strconv.Atoi(pin)
-	l, _ := strconv.Atoi(level)
+
 	da.LittleWire.PinMode(uint8(p), 0)
-	da.LittleWire.DigitalWrite(uint8(p), uint8(l))
+	da.LittleWire.DigitalWrite(uint8(p), l)
 }
 
 func (da *DigisparkAdaptor) InitServo() {
