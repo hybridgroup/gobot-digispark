@@ -15,12 +15,12 @@ func main() {
 
 	led := gobotGPIO.NewLed(digispark)
 	led.Name = "led"
-	led.Pin = "2"
+	led.Pin = "0"
 
 	master.Robots = append(master.Robots, gobot.Robot{
 		Name:        "digispark",
-		Connections: []interface{}{digispark},
-		Devices:     []interface{}{led},
+		Connections: []gobot.Connection{digispark},
+		Devices:     []gobot.Device{led},
 	})
 
 	master.Start()

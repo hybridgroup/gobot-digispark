@@ -13,7 +13,7 @@ func main() {
 
 	led := gobotGPIO.NewLed(digispark)
 	led.Name = "led"
-	led.Pin = "2"
+	led.Pin = "0"
 
 	work := func() {
 		gobot.Every("0.5s", func() {
@@ -22,8 +22,8 @@ func main() {
 	}
 
 	robot := gobot.Robot{
-		Connections: []interface{}{digispark},
-		Devices:     []interface{}{led},
+		Connections: []gobot.Connection{digispark},
+		Devices:     []gobot.Device{led},
 		Work:        work,
 	}
 

@@ -17,7 +17,6 @@ func main() {
 	servo.Pin = "0"
 
 	work := func() {
-		servo.InitServo()
 		gobot.Every("1s", func() {
 			i := uint8(gobot.Rand(180))
 			fmt.Println("Turning", i)
@@ -26,8 +25,8 @@ func main() {
 	}
 
 	robot := gobot.Robot{
-		Connections: []interface{}{digispark},
-		Devices:     []interface{}{servo},
+		Connections: []gobot.Connection{digispark},
+		Devices:     []gobot.Device{servo},
 		Work:        work,
 	}
 
