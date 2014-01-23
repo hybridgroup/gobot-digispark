@@ -27,7 +27,7 @@ func (da *DigisparkAdaptor) DigitalWrite(pin string, level byte) {
 	p, _ := strconv.Atoi(pin)
 
 	da.LittleWire.PinMode(uint8(p), 0)
-	da.LittleWire.DigitalWrite(uint8(p), l)
+	da.LittleWire.DigitalWrite(uint8(p), level)
 }
 
 func (da *DigisparkAdaptor) InitServo() {
