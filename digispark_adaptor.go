@@ -8,6 +8,8 @@ import (
 type DigisparkAdaptor struct {
 	gobot.Adaptor
 	LittleWire *LittleWire
+	servo      bool
+	pwm        bool
 }
 
 func (da *DigisparkAdaptor) Connect() bool {
@@ -29,11 +31,25 @@ func (da *DigisparkAdaptor) DigitalWrite(pin string, level byte) {
 	da.LittleWire.PinMode(uint8(p), 0)
 	da.LittleWire.DigitalWrite(uint8(p), level)
 }
-
-func (da *DigisparkAdaptor) InitServo() {
-	da.LittleWire.ServoInit()
+func (da *DigisparkAdaptor) DigitalRead(pin string, level byte) {}
+func (da *DigisparkAdaptor) PwmWrite(pin string, value byte) {
+	if da.pwm == false {
+		da.LittleWire.PwmInit()
+		da.LittleWire.PwmUpdatePrescaler(1)
+		da.pwm = true
+	}
+	da.LittleWire.PwmUpdateCompare(value, value)
 }
+func (da *DigisparkAdaptor) AnalogRead(string) int { return -1 }
 
 func (da *DigisparkAdaptor) ServoWrite(pin string, angle uint8) {
+	if da.servo == false {
+		da.LittleWire.ServoInit()
+		da.servo = true
+	}
 	da.LittleWire.ServoUpdateLocation(angle, angle)
 }
+
+func (da *DigisparkAdaptor) I2cStart(byte)           {}
+func (da *DigisparkAdaptor) I2cRead(uint16) []uint16 { return make([]uint16, 0) }
+func (da *DigisparkAdaptor) I2cWrite([]uint16)       {}
