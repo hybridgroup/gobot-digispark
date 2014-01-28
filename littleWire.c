@@ -35,6 +35,14 @@ int		LastDiscrepancy;
 int 	LastFamilyDiscrepancy;
 int 	LastDeviceFlag;
 
+
+unsigned char rxBuffer[RX_BUFFER_SIZE]; /* This has to be unsigned for the data's sake */
+unsigned char ROM_NO[8];
+int lwStatus;
+lwCollection lwResults[16];
+int lw_totalDevices;
+
+
 /******************************************************************************
 / Taken from: http://www.maxim-ic.com/appnotes.cfm/appnote_number/187
 /*****************************************************************************/
