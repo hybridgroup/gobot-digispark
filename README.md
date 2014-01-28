@@ -73,6 +73,11 @@ If your Digispark (http://www.kickstarter.com/projects/digistump/digispark-the-t
 Otherwise, for instructions on how to install Little Wire on a Digispark check out http://digistump.com/board/index.php/topic,160.0.html
 
 ### OSX
+```
+Important: 2012 MBP The USB ports on the 2012 MBPs (Retina and non) cause issues due to their USB3 controllers,
+currently the best work around is to use a cheap USB hub (non USB3) - we are working on future solutions. The hub 
+on a Cinema display will work as well.
+```
 
 The main steps are:
 - Plug in the Digispark to the USB port
