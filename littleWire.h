@@ -28,10 +28,10 @@
   SOFTWARE.
 */
 
-#ifdef __linux__
-   #include <usb.h>				// this is libusb, see http://libusb.sourceforge.net/
+#ifdef _WIN32
+   #include <lusb0_usb.h>   // this is libusb, see http://libusb.sourceforge.net/
 #else
-   #include <lusb0_usb.h>		// this is libusb, see http://libusb.sourceforge.net/
+   #include <usb.h>       // this is libusb, see http://libusb.sourceforge.net/
 #endif
 #include "opendevice.h"			// common code moved to separate module
 #include "littleWire_util.h"
