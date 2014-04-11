@@ -12,8 +12,12 @@ type DigisparkAdaptor struct {
 	pwm        bool
 }
 
+var connect = func() *LittleWire {
+	return LittleWireConnect()
+}
+
 func (da *DigisparkAdaptor) Connect() bool {
-	da.LittleWire = LittleWireConnect()
+	da.LittleWire = connect()
 	da.Connected = true
 	return true
 }
@@ -22,8 +26,8 @@ func (da *DigisparkAdaptor) Reconnect() bool {
 	return da.Connect()
 }
 
-func (da *DigisparkAdaptor) Finalize() bool   { return false }
-func (da *DigisparkAdaptor) Disconnect() bool { return false }
+func (da *DigisparkAdaptor) Finalize() bool   { return true }
+func (da *DigisparkAdaptor) Disconnect() bool { return true }
 
 func (da *DigisparkAdaptor) DigitalWrite(pin string, level byte) {
 	p, _ := strconv.Atoi(pin)
