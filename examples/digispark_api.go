@@ -17,7 +17,7 @@ func main() {
 	led.Name = "led"
 	led.Pin = "0"
 
-	master.Robots = append(master.Robots, gobot.Robot{
+	master.Robots = append(master.Robots, &gobot.Robot{
 		Name:        "digispark",
 		Connections: []gobot.Connection{digispark},
 		Devices:     []gobot.Device{led},
