@@ -46,6 +46,7 @@ func (da *DigisparkAdaptor) PwmWrite(pin string, value byte) {
 }
 func (da *DigisparkAdaptor) AnalogRead(string) int { return -1 }
 
+func (da *DigisparkAdaptor) InitServo() {}
 func (da *DigisparkAdaptor) ServoWrite(pin string, angle uint8) {
 	if da.servo == false {
 		da.LittleWire.ServoInit()
