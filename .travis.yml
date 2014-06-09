@@ -3,6 +3,9 @@ go:
  - 1.2
  - release
  - tip
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install -y libusb-dev # littlewire uses < 1.0 version of libusb
 install:
  - go get -v . && go build -v .
  - go get github.com/onsi/ginkgo
