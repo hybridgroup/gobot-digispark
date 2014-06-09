@@ -35,7 +35,11 @@ func (da *DigisparkAdaptor) DigitalWrite(pin string, level byte) {
 	da.LittleWire.PinMode(uint8(p), 0)
 	da.LittleWire.DigitalWrite(uint8(p), level)
 }
-func (da *DigisparkAdaptor) DigitalRead(pin string, level byte) {}
+func (da *DigisparkAdaptor) DigitalRead(pin string) int {
+	p, _ := strconv.Atoi(pin)
+	
+	return int(da.LittleWire.DigitalRead(uint8(p)))
+}
 func (da *DigisparkAdaptor) PwmWrite(pin string, value byte) {
 	if da.pwm == false {
 		da.LittleWire.PwmInit()
